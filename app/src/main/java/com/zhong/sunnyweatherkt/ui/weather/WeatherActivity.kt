@@ -10,6 +10,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.appbar.AppBarLayout
+import com.zhong.sunnyweatherkt.CollapsingToolbarLayoutState
 import com.zhong.sunnyweatherkt.R
 import com.zhong.sunnyweatherkt.base.BaseActivity
 import com.zhong.sunnyweatherkt.logic.model.Weather
@@ -21,6 +23,7 @@ import kotlinx.android.synthetic.main.life_index.*
 import kotlinx.android.synthetic.main.now.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
 
 /**
  *@Time: 2020/9/16
@@ -29,6 +32,9 @@ import java.util.*
  */
 
 class WeatherActivity : BaseActivity() {
+
+
+    private var appBarState: CollapsingToolbarLayoutState = CollapsingToolbarLayoutState.EXPANDED
 
     val viewModel by lazy { ViewModelProvider(this).get(WeatherViewModel::class.java) }
 
@@ -60,6 +66,10 @@ class WeatherActivity : BaseActivity() {
         refreshWeather()
     }
 
+    override fun hasFullScreenUI(): Boolean {
+        return true
+    }
+
     override fun initView() {
 
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
@@ -86,6 +96,23 @@ class WeatherActivity : BaseActivity() {
             }
 
             override fun onDrawerStateChanged(newState: Int) {
+            }
+        })
+        appbarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (verticalOffset == 0) {
+                if (appBarState != CollapsingToolbarLayoutState.EXPANDED) {
+                    appBarState = CollapsingToolbarLayoutState.EXPANDED
+                    swipeRefresh.isEnabled = true
+                }
+            } else if (abs(verticalOffset) >= appBarLayout.totalScrollRange) {
+                if (appBarState != CollapsingToolbarLayoutState.COLLAPSED) {
+                    appBarState = CollapsingToolbarLayoutState.COLLAPSED
+                }
+            } else {
+                if (appBarState != CollapsingToolbarLayoutState.INTERNEDIATE) {
+                    appBarState = CollapsingToolbarLayoutState.INTERNEDIATE
+                    swipeRefresh.isEnabled = false
+                }
             }
         })
     }

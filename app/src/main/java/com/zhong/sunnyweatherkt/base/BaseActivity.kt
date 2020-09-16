@@ -17,16 +17,21 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= 21) {
-            val decorView = window.decorView
-            decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        if (hasFullScreenUI()) {
+            if (Build.VERSION.SDK_INT >= 21) {
+                val decorView = window.decorView
+                decorView.systemUiVisibility =
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            }
         }
         setContentView(getLayoutId())
 
         initView()
     }
 
+    open fun hasFullScreenUI(): Boolean {
+        return false
+    }
 
     abstract fun getLayoutId(): Int
 

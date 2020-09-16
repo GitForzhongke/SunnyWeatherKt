@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,45 +10,89 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:id="@+id/weatherLayout"
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            android:visibility="invisible">
+            android:fitsSystemWindows="true">
 
-            <LinearLayout
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="530dp"
+                android:fitsSystemWindows="true"
+                android:theme="@style/AppTheme.AppBarOverlay">
 
-                <include layout="@layout/now" />
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    app:statusBarScrim="@android:color/transparent">
 
-                <include layout="@layout/forecast" />
+                    <include layout="@layout/now" />
 
-                <include layout="@layout/life_index" />
+                    <androidx.appcompat.widget.Toolbar
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:gravity="top"
+                        android:minHeight="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/AppTheme.AppBarOverlay"
+                        app:titleMarginTop="15dp">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="天气" />
 
-        </ScrollView>
+                    </androidx.appcompat.widget.Toolbar>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
 
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/weatherLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="invisible"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <include layout="@layout/forecast" />
+
+                    <include layout="@layout/life_index" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/colorPrimary"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@color/colorPrimary">
+        android:focusable="true">
 
         <fragment
             android:id="@+id/placeFragment"
             android:name="com.zhong.sunnyweatherkt.ui.place.PlaceFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp" />
 
     </FrameLayout>
 
