@@ -61,7 +61,6 @@ class WeatherActivity : BaseActivity() {
                 "无法成功获取天气".showToast()
                 result.exceptionOrNull()?.printStackTrace()
             }
-            swipeRefresh.isRefreshing = false
         })
         refreshWeather()
     }
@@ -72,14 +71,14 @@ class WeatherActivity : BaseActivity() {
 
     override fun initView() {
 
-        swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
-
-        swipeRefresh.setOnRefreshListener {
-            refreshWeather()
-        }
-        navBtn.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
+//        swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
+//
+//        swipeRefresh.setOnRefreshListener {
+//            refreshWeather()
+//        }
+//        navBtn.setOnClickListener {
+//            drawerLayout.openDrawer(GravityCompat.START)
+//        }
         drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerClosed(drawerView: View) {
                 val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -102,7 +101,6 @@ class WeatherActivity : BaseActivity() {
             if (verticalOffset == 0) {
                 if (appBarState != CollapsingToolbarLayoutState.EXPANDED) {
                     appBarState = CollapsingToolbarLayoutState.EXPANDED
-                    swipeRefresh.isEnabled = true
                 }
             } else if (abs(verticalOffset) >= appBarLayout.totalScrollRange) {
                 if (appBarState != CollapsingToolbarLayoutState.COLLAPSED) {
@@ -111,7 +109,6 @@ class WeatherActivity : BaseActivity() {
             } else {
                 if (appBarState != CollapsingToolbarLayoutState.INTERNEDIATE) {
                     appBarState = CollapsingToolbarLayoutState.INTERNEDIATE
-                    swipeRefresh.isEnabled = false
                 }
             }
         })
@@ -119,23 +116,24 @@ class WeatherActivity : BaseActivity() {
 
     fun refreshWeather() {
         viewModel.refreshWeather(viewModel.locationLng, viewModel.locationLat)
-        swipeRefresh.isRefreshing = true
     }
 
 
     private fun showWeatherInfo(weather: Weather) {
         val mInflater = LayoutInflater.from(this)
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        placeName.text = viewModel.placeName
+
         val realtime = weather.realtime
         val daily = weather.daily
-
-        val currentTempText = "${realtime.temperature.toInt()} °C"
-        currentTemp.text = currentTempText
-        currentSky.text = getSky(realtime.skycon).info
-        val currentPM25Text = "空气指数 ${realtime.airQuality.aqi.chn.toInt()}"
-        currentAQI.text = currentPM25Text
-        nowLayout.setBackgroundResource(getSky(realtime.skycon).bg)
+//        placeName.text = viewModel.placeName
+//        val currentTempText = "${realtime.temperature.toInt()} °C"
+//        currentTemp.text = currentTempText
+//        currentSky.text = getSky(realtime.skycon).info
+//        val currentPM25Text = "空气指数 ${realtime.airQuality.aqi.chn.toInt()}"
+//        currentAQI.text = currentPM25Text
+//        nowLayout.setBackgroundResource(getSky(realtime.skycon).bg)
+        drawerLayout.setBackgroundResource(getSky(realtime.skycon).bg)
+//        weather_bg.setImageResource(getSky(realtime.skycon).bg)
         forecastLayout.removeAllViews()
         val days = daily.skycon.size
         for (i in 0 until days) {
