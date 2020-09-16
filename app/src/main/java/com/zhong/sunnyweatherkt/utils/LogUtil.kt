@@ -22,31 +22,31 @@ object LogUtil {
     private val level = VERBOSE
 
 
-    fun v(tag: String, message: String) {
+    fun v(tag: String?, message: String) {
         if (level <= VERBOSE) {
             Log.v(tag, message)
         }
     }
 
-    fun d(tag: String, message: String) {
+    fun d(tag: String?, message: String) {
         if (level <= DEBUG) {
             Log.d(tag, message)
         }
     }
 
-    fun i(tag: String, message: String) {
+    fun i(tag: String?, message: String) {
         if (level <= INFO) {
             Log.i(tag, message)
         }
     }
 
-    fun w(tag: String, message: String) {
+    fun w(tag: String?, message: String) {
         if (level <= WARN) {
             Log.w(tag, message)
         }
     }
 
-    fun e(tag: String, message: String) {
+    fun e(tag: String?, message: String) {
         if (level <= ERROR) {
             Log.e(tag, message)
         }
