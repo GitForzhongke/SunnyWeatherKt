@@ -1,4 +1,4 @@
-package com.zhong.sunnyweatherkt
+package com.zhong.sunnyweatherkt.weatherenum
 
 /**
  *@Time: 2020/9/16

@@ -11,7 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
-import com.zhong.sunnyweatherkt.CollapsingToolbarLayoutState
+import com.zhong.sunnyweatherkt.weatherenum.CollapsingToolbarLayoutState
 import com.zhong.sunnyweatherkt.R
 import com.zhong.sunnyweatherkt.base.BaseActivity
 import com.zhong.sunnyweatherkt.logic.model.Weather
