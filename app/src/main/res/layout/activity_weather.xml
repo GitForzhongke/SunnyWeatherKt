@@ -87,7 +87,7 @@
         android:clickable="true"
         android:focusable="true">
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/placeFragment"
             android:name="com.zhong.sunnyweatherkt.ui.place.PlaceFragment"
             android:layout_width="match_parent"
