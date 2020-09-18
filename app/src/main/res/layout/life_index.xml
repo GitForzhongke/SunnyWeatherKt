@@ -4,30 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    app:strokeColor="@color/transparent"
-    app:strokeWidth="0dp"
-    app:cardElevation="0dp"
     app:cardBackgroundColor="@color/transparent"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="4dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/transparent"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            android:text="生活指数"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="20sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -53,7 +45,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
                         android:text="感冒"
+                        android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
                     <TextView
@@ -61,7 +55,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -91,7 +86,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
                         android:text="穿衣"
+                        android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
                     <TextView
@@ -99,7 +96,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -136,7 +134,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
                         android:text="实时紫外线"
+                        android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
                     <TextView
@@ -144,7 +144,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -174,7 +175,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
                         android:text="洗车"
+                        android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
                     <TextView
@@ -182,7 +185,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
 

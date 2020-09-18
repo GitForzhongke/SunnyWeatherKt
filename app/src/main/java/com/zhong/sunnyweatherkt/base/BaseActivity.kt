@@ -16,7 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 abstract class BaseActivity : AppCompatActivity() {
-    protected val TAG: String? = BaseFragment::class.simpleName
+
+    fun getDefTag() = BaseFragment::class.simpleName
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

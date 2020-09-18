@@ -2,36 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nowLayout"
     android:layout_width="match_parent"
-    android:layout_height="530dp"
+    android:layout_height="300dp"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/titleLayout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:fitsSystemWindows="true">
-
-        <Button
-            android:id="@+id/navBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="15dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_home" />
-
-        <TextView
-            android:id="@+id/placeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:layout_gravity="center"
-            android:singleLine="true"
-            android:ellipsize="middle"
-            android:textColor="#fff"
-            android:textSize="22sp" />
-
-    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/bodyLayout"
@@ -40,44 +13,50 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/currentTemp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#fff"
-            android:textSize="70sp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/placeName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:includeFontPadding="false"
+                android:textColor="@android:color/white"
+                android:textSize="36sp" />
 
             <TextView
                 android:id="@+id/currentSky"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="18sp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@android:color/white"
+                android:includeFontPadding="false"
+                android:gravity="center|bottom"
+                android:textSize="24sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:text="|" />
+        </FrameLayout>
 
-            <TextView
-                android:id="@+id/currentAQI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:textColor="#fff"
-                android:textSize="18sp" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/currentTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:textSize="70sp" />
+
+        <TextView
+            android:id="@+id/currentAQI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

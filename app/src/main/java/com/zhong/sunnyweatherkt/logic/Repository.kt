@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlin.coroutines.CoroutineContext
+import kotlin.math.ln
 
 object Repository {
 
@@ -30,16 +31,31 @@ object Repository {
             val deferredDaily = async {
                 SunnyWeatherNetWork.getDailyWeather(lng, lat)
             }
+            val deferredHourly = async {
+                SunnyWeatherNetWork.getHourlyWeather(lng, lat)
+            }
+            val deferredWeather = async {
+                SunnyWeatherNetWork.getNomalWeather(lng, lat)
+            }
             val realtimeResponse = deferredRealtime.await()
             val dailyResponse = deferredDaily.await()
-            if (realtimeResponse.status == "ok" && dailyResponse.status == "ok") {
-                val weather = Weather(realtimeResponse.result.realtime, dailyResponse.result.daily)
+            val hourlyResponse = deferredHourly.await()
+            val weatherResponse = deferredWeather.await()
+            if (realtimeResponse.status == "ok" && dailyResponse.status == "ok" && hourlyResponse.status == "ok" && weatherResponse.status == "ok") {
+                val weather = Weather(
+                    realtimeResponse.result.realtime,
+                    dailyResponse.result.daily,
+                    hourlyResponse.result.hourly,
+                    weatherResponse.result
+                )
                 Result.success(weather)
             } else {
                 Result.failure(
                     RuntimeException(
                         "realtime response status is ${realtimeResponse.status}" +
-                                "daily response status is ${dailyResponse.status}"
+                                "daily response status is ${dailyResponse.status}" +
+                                "hourly response status is ${hourlyResponse.status}" +
+                                "weather response status is ${weatherResponse.status}"
                     )
                 )
             }

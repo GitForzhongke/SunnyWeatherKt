@@ -6,30 +6,16 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <!--    <FrameLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:fitsSystemWindows="true">-->
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/weather_bg"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:scaleType="centerCrop" />-->
-
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparent"
-        android:fitsSystemWindows="true">
+        android:background="@color/transparent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbarLayout"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="@color/transparent"
-            android:fitsSystemWindows="true"
             android:stateListAnimator="@null"
             android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -38,42 +24,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:statusBarScrim="@android:color/transparent">
 
-                <!--                    <include layout="@layout/now" />-->
+                <include layout="@layout/now" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:background="@android:color/transparent"
                     android:gravity="top"
-                    android:minHeight="100dp"
+                    android:minHeight="90dp"
                     android:theme="@style/AppTheme.AppBarOverlay"
                     app:contentInsetEnd="0dp"
                     app:contentInsetStart="0dp"
-                    app:layout_collapseMode="pin"
-                    app:titleMarginTop="15dp">
+                    app:layout_collapseMode="pin">
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp">
 
                         <TextView
                             android:id="@+id/person_address"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="天气" />
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center_horizontal"
+                            android:includeFontPadding="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="36sp"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/address_weather"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="天气" />
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center|bottom"
+                            android:includeFontPadding="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp"
+                            android:visibility="gone" />
 
                     </FrameLayout>
 
@@ -81,32 +74,85 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/weatherLayout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            android:visibility="invisible"
+            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="1dp"
+                android:background="@color/color_4DFFFFFF" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hourly_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:overScrollMode="never" />
 
 
-                <include layout="@layout/forecast" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_4DFFFFFF" />
 
-                <include layout="@layout/life_index" />
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/weatherLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="invisible">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        </androidx.core.widget.NestedScrollView>
 
+                    <include layout="@layout/forecast" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_4DFFFFFF" />
+
+                    <TextView
+                        android:id="@+id/weather_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="22dp"
+                        android:layout_marginBottom="13dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_4DFFFFFF" />
+
+
+                    <include layout="@layout/weather_info" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="100dp"
+                        android:background="@color/color_4DFFFFFF" />
+
+                    <!--                <include layout="@layout/life_index" />-->
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <!--    </FrameLayout>-->
 
 
     <FrameLayout
