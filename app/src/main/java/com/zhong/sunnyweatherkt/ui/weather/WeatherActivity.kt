@@ -221,6 +221,5 @@ class WeatherActivity : BaseActivity() {
 //        dressingText.text = lifeIndex.dressing[0].desc
 //        ultravioletText.text = lifeIndex.ultraviolet[0].desc
 //        carWashingText.text = lifeIndex.carWashing[0].desc
-        weatherLayout.visibility = View.VISIBLE
     }
 }
